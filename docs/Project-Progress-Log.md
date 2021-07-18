@@ -2,7 +2,7 @@
 
 - [x] Paper Selection
 - [x] Create a GitHub Repo
-- [ ] Initialize Project Folders
+- [x] Initialize Project Folders
 - [ ] Prepare First Presentation
 - [ ] Write script to download ImageNet classification task Dataset
 - [ ] Write script to download PASCAL VOC 2007 and 2012 dataset
