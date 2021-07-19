@@ -2,12 +2,15 @@
 
 - [x] Paper Selection
 - [x] Create a GitHub Repo
+- [x] Access GPU
 - [x] Initialize Project Folders
-- [ ] Prepare First Presentation
-- [ ] Write script to download ImageNet classification task Dataset
-- [ ] Write script to download PASCAL VOC 2007 and 2012 dataset
-- [ ] Model Architecture Implementation and testing
-- [ ] Write script to train convolutional layers on the ImageNet Classification task
-- [ ] Understand, define and implement object detection goal: multi-part loss function
-- [ ] Train the model on PASCAL dataset
+- [x] Prepare First Presentation
+- [x] Download PASCAL Dataset from Kaggle
+- [ ] DataSet and DataLoader Development and testing
+- [ ] YOLO Model Architecture Implementation and testing
+- [ ] Loss function Development and testing
+- [ ] Learner Class Development and testing
+- [ ] Train the YOLO model on PASCAL dataset
+- [ ] Train a pre-trained Resnet on PASCAL dataset 
 - [ ] Evaluate performance and compare with the original paper
+- [ ] Project Display Setup
