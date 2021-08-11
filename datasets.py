@@ -11,9 +11,16 @@ import cv2
 from PIL import Image
 import torchvision.transforms as transforms
 
-def load_data():
+def load_full_data():
     df_train = pd.read_csv("data/train.csv")
     df_valid = pd.read_csv("data/test.csv")
+    
+    return df_train, df_valid
+
+
+def load_data():
+    df_train = pd.read_csv("data/train.csv")[:1000]
+    df_valid = pd.read_csv("data/test.csv")[:50]
     
     return df_train, df_valid
 
