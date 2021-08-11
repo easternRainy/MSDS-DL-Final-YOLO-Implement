@@ -30,7 +30,7 @@ class Learner:
             valid_loss = self._one_pass_loss(valid_dl, device, backwards=False)
             valid_mAP = self._one_pass_mAP(valid_dl, device)
             
-            log_msg = f"Epoch: {epoch}, valid loss: {train_loss}, valid_mAP: {train_mAP}"
+            log_msg = f"Epoch: {epoch}, valid loss: {valid_loss}, valid_mAP: {valid_mAP}"
             self._log(log_msg)
             
             
@@ -77,6 +77,7 @@ class Learner:
     
     
     def _one_pass_mAP(self, dl, device):
+        self.model.eval()
         pred_boxes, target_boxes = get_bboxes(dl, self.model, device)
         mAP = mean_average_precision(pred_boxes, target_boxes)
         
