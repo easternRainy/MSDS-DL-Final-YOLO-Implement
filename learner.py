@@ -1,6 +1,8 @@
 import torch
 import torch.nn as nn
-import torch.utils.optim as optim
+import torch.optim as optim
+from losses import *
+import tqdm
 
 class Learner:
     
@@ -20,22 +22,23 @@ class Learner:
             print(f"Epoch: {epoch}")
             
             train_loss = self._one_pass_loss(train_dl, device)
-            train_IoU = self._one_pass_IoU(train_dl, device)
+            train_mAP = self._one_pass_mAP(train_dl, device)
             
-            log_msg = f"Epoch: {epoch}, train loss: {train_loss}, train_IoU: {train_IoU}"
+            log_msg = f"Epoch: {epoch}, train loss: {train_loss}, train_mAP: {train_mAP}"
             self._log(log_msg)
             
             valid_loss = self._one_pass_loss(valid_dl, device, backwards=False)
-            valid_IoU = self._one_pass_IoU(valid_dl, device)
+            valid_mAP = self._one_pass_mAP(valid_dl, device)
             
-            log_msg = f"Epoch: {epoch}, valid loss: {train_loss}, valid_IoU: {train_IoU}"
+            log_msg = f"Epoch: {epoch}, valid loss: {train_loss}, valid_mAP: {train_mAP}"
             self._log(log_msg)
             
             
     def _log(self, message):
         if message.endswith('\n') is False:
             message += '\n'
-            
+        
+        print(message)
         with open(self.log_file, "a") as f:
             f.write(message)
             
@@ -72,3 +75,9 @@ class Learner:
         
         return avg_loss
     
+    
+    def _one_pass_mAP(self, dl, device):
+        pred_boxes, target_boxes = get_bboxes(dl, self.model, device)
+        mAP = mean_average_precision(pred_boxes, target_boxes)
+        
+        return mAP
