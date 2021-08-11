@@ -19,9 +19,10 @@ def load_data():
 
 
 def load_tiny():
-    df_tiny = pd.read_csv("data/8examples.csv")
+    df_train = pd.read_csv("data/100examples.csv")
+    df_valid = pd.read_csv("data/8examples.csv")
     
-    return df_tiny
+    return df_train, df_valid
 
 
 class YOLODataset(Dataset):
@@ -51,7 +52,8 @@ class YOLODataset(Dataset):
         image = self._load_image(idx)
         boxes = self._load_boxes(idx)
         label_matrix = self._load_label_matrix(boxes)
-        
+#         print(torch.max(image), torch.max(torch.tensor(boxes)), torch.max(label_matrix))
+
         return image, label_matrix
         
         
@@ -110,7 +112,8 @@ class YOLODataset(Dataset):
                 label_matrix[i, j, 20] = 1 # for computing loss, the probability is 1
                 label_matrix[i, j, class_label] = 1
                 box_coord = torch.tensor([cell_x, cell_y, width_cell, height_cell])
+                
                 label_matrix[i, j, 21:25] = box_coord
 #             print(label_matrix[i, j])
-                
+        
         return label_matrix  
