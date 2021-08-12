@@ -1,0 +1,4 @@
+Epoch: 0, train loss: 792.9127576513198, train_mAP: 0.0
+Epoch: 0, valid loss: 465807.68834495544, valid_mAP: 0.0
+Epoch: 1, train loss: 1042.7636193580997, train_mAP: 1.9931435417674948e-06
+Epoch: 1, valid loss: 10480.354461669922, valid_mAP: 0.0

@@ -331,7 +331,7 @@ class YOLOLoss(nn.Module):
                class_loss
         
 #         print(f"box_loss: {box_loss}, object_loss: {object_loss}, no_object_loss: {no_object_loss}, class_loss: {class_loss}")
-        return loss
+        return loss / 100
         
     def _box_coord_loss(self, exists_box, best_box, predictions, target):
         box_predictions = exists_box * (
