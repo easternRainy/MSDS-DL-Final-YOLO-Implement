@@ -38,6 +38,7 @@ However, our implementation
 | ResNet34  | 3.018% |
 
 - Here are the metrics curves
+
 | YOLO our implementation | ResNet34 |
 |-------------------------|----------|
 | ![](images/yolo_on_full_data.jpg) | ![](images/resnet_on_full_data.jpg) |
